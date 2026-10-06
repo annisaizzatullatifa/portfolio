@@ -3,6 +3,7 @@ import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
 
+const baseUrl = import.meta.env.BASE_URL
 // Cinema "NOW SHOWING" Sections Data
 const sections = [
   {
@@ -10,21 +11,21 @@ const sections = [
     name: 'EDUCATION',
     status: 'SHOWING NOW',
     path: '',
-    image: '/telkomUniversity.png',
+    image: `${baseUrl}telkomUniversity.png`,
   },
   {
     id: 'experience',
     name: 'EXPERIENCE',
     status: 'SHOWING NOW',
     path: '',
-    image: '/fmlx.jpeg',
+    image: `${baseUrl}fmlx.jpeg`,
   },
   {
     id: 'projects',
     name: 'PROJECTS',
     status: 'SHOWING NOW',
     path: '',
-    image: '/porto.png',
+    image: `${baseUrl}porto.png`,
   },
 ]
 
