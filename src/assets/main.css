@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-anton: 'Anton', sans-serif;
+  --font-dancing: 'Dancing Script', cursive;
+  --font-great-vibes: 'Great Vibes', cursive;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+/* Custom Animation Keyframes */
+@keyframes floatGentle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.3) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation utilities */
+.animate-float-gentle {
+  animation: floatGentle 4.5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-delay {
+  animation: twinkle 3s ease-in-out infinite 1.5s;
+}
+
+/* Smooth transitions */
+.smooth-tilt {
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform;
+}
+
+/* Artistic Dancing Script Bold Accent */
+.font-dancing-bold {
+  font-family: var(--font-dancing);
+  font-weight: 700;
+  -webkit-text-stroke: 0.028em currentColor;
+  paint-order: stroke fill;
+}
+
+/* Artistic Great Vibes Bold Accent */
+.font-great-vibes-semibold {
+  font-family: var(--font-great-vibes);
+  font-weight: 300;
+  -webkit-text-stroke: 0.038em currentColor;
+  paint-order: stroke fill;
+}
+
+.font-great-vibes-bold {
+  font-family: var(--font-great-vibes);
+  font-weight: 600;
+  -webkit-text-stroke: 0.038em currentColor;
+  paint-order: stroke fill;
+}
