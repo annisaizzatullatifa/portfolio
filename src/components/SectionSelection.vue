@@ -9,8 +9,13 @@ const sections = [
   {
     id: 'education',
     name: 'EDUCATION',
+<<<<<<< main
     status: 'SHOWING NOW',
     path: '',
+=======
+    status: 'NOW SHOWING',
+    path: '/education',
+>>>>>>> local
     image: `${baseUrl}telkomUniversity.png`,
   },
   {
@@ -35,8 +40,8 @@ const handleNavigate = (path, event) => {
     event?.preventDefault()
     return
   }
+  event?.preventDefault()
   if (path.startsWith('http://') || path.startsWith('https://')) {
-    event?.preventDefault()
     window.location.href = path
     return
   }

@@ -1,14 +1,11 @@
 <script setup>
-import HeroSection from './components/HeroSection.vue'
-import SummarySection from './components/SummarySection.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <main class="min-h-screen bg-[#0a0a0a] text-white">
-    <HeroSection />
-    <SummarySection />
-  </main>
+  <RouterView />
 </template>
 
 <style scoped></style>
+
 
