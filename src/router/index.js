@@ -23,7 +23,11 @@ const router = createRouter({
     if (savedPosition) {
       return savedPosition
     }
-    return { top: 0, behavior: 'smooth' }
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ top: 0, left: 0 })
+      }, 220)
+    })
   },
 })
 

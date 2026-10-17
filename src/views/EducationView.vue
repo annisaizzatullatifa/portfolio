@@ -11,20 +11,35 @@ const socialLinks = [
   { name: 'Instagram', url: 'https://www.instagram.com/annisaizzatull.a.s' },
 ]
 
-// Twinkling Stars across the background
-const stars = [
-  { id: 1, top: '8%', left: '6%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-70', delay: '0.2s' },
-  { id: 2, top: '14%', right: '8%', size: 'w-5 h-5', color: 'text-yellow-200', opacity: 'opacity-65', delay: '1.4s' },
-  { id: 3, top: '22%', left: '14%', size: 'w-2.5 h-2.5', color: 'text-amber-300', opacity: 'opacity-50', delay: '0.8s' },
-  { id: 4, top: '30%', right: '16%', size: 'w-3.5 h-3.5', color: 'text-amber-400', opacity: 'opacity-60', delay: '2.1s' },
-  { id: 5, top: '42%', left: '4%', size: 'w-4 h-4', color: 'text-yellow-100', opacity: 'opacity-40', delay: '1.7s' },
-  { id: 6, top: '50%', right: '5%', size: 'w-3 h-3', color: 'text-amber-300', opacity: 'opacity-55', delay: '0.5s' },
-  { id: 7, top: '62%', left: '8%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-60', delay: '1.1s' },
-  { id: 8, top: '70%', right: '10%', size: 'w-2.5 h-2.5', color: 'text-yellow-200', opacity: 'opacity-45', delay: '2.4s' },
-  { id: 9, top: '80%', left: '12%', size: 'w-3.5 h-3.5', color: 'text-amber-300', opacity: 'opacity-50', delay: '1.9s' },
-  { id: 10, top: '88%', right: '7%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-70', delay: '0.4s' },
-  { id: 11, top: '26%', left: '2%', size: 'w-3 h-3', color: 'text-white', opacity: 'opacity-35', delay: '2.8s' },
-  { id: 12, top: '56%', right: '3%', size: 'w-3 h-3', color: 'text-white', opacity: 'opacity-35', delay: '1.3s' },
+// Background Stars Flanking Left and Right (Matching HeroSection.vue)
+const backgroundStars = [
+  // === Left Flank Cluster ===
+  { id: 'l1', top: '4%', left: '3%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-70', delay: '0.2s', duration: '3.2s' },
+  { id: 'l2', top: '10%', left: '6%', size: 'w-2.5 h-2.5', color: 'text-yellow-200', opacity: 'opacity-40', delay: '1.2s', duration: '2.8s' },
+  { id: 'l3', top: '18%', left: '2%', size: 'w-5 h-5', color: 'text-amber-300', opacity: 'opacity-65', delay: '0.6s', duration: '3.6s' },
+  { id: 'l4', top: '26%', left: '5%', size: 'w-3 h-3', color: 'text-amber-400', opacity: 'opacity-45', delay: '2.0s', duration: '3.0s' },
+  { id: 'l5', top: '35%', left: '3%', size: 'w-4 h-4', color: 'text-yellow-100', opacity: 'opacity-50', delay: '1.5s', duration: '3.8s' },
+  { id: 'l6', top: '44%', left: '7%', size: 'w-2 h-2', color: 'text-white', opacity: 'opacity-35', delay: '0.9s', duration: '4.0s' },
+  { id: 'l7', top: '53%', left: '2%', size: 'w-4.5 h-4.5', color: 'text-amber-400', opacity: 'opacity-60', delay: '2.3s', duration: '3.3s' },
+  { id: 'l8', top: '62%', left: '5%', size: 'w-3 h-3', color: 'text-yellow-300', opacity: 'opacity-45', delay: '0.4s', duration: '3.5s' },
+  { id: 'l9', top: '71%', left: '3%', size: 'w-3.5 h-3.5', color: 'text-amber-300', opacity: 'opacity-55', delay: '1.8s', duration: '3.1s' },
+  { id: 'l10', top: '80%', left: '6%', size: 'w-2.5 h-2.5', color: 'text-white', opacity: 'opacity-30', delay: '2.6s', duration: '4.2s' },
+  { id: 'l11', top: '89%', left: '2%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-65', delay: '1.0s', duration: '3.4s' },
+  { id: 'l12', top: '96%', left: '5%', size: 'w-3 h-3', color: 'text-yellow-200', opacity: 'opacity-40', delay: '0.7s', duration: '3.7s' },
+
+  // === Right Flank Cluster ===
+  { id: 'r1', top: '3%', right: '4%', size: 'w-4 h-4', color: 'text-amber-300', opacity: 'opacity-65', delay: '0.4s', duration: '3.1s' },
+  { id: 'r2', top: '9%', right: '2%', size: 'w-5 h-5', color: 'text-amber-400', opacity: 'opacity-75', delay: '1.6s', duration: '3.4s' },
+  { id: 'r3', top: '17%', right: '6%', size: 'w-2.5 h-2.5', color: 'text-yellow-200', opacity: 'opacity-40', delay: '2.2s', duration: '2.9s' },
+  { id: 'r4', top: '25%', right: '3%', size: 'w-3.5 h-3.5', color: 'text-white', opacity: 'opacity-35', delay: '0.8s', duration: '3.9s' },
+  { id: 'r5', top: '34%', right: '5%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-55', delay: '1.9s', duration: '3.3s' },
+  { id: 'r6', top: '43%', right: '2%', size: 'w-2.5 h-2.5', color: 'text-yellow-300', opacity: 'opacity-40', delay: '0.5s', duration: '3.6s' },
+  { id: 'r7', top: '52%', right: '6%', size: 'w-4 h-4', color: 'text-amber-300', opacity: 'opacity-60', delay: '2.4s', duration: '3.0s' },
+  { id: 'r8', top: '61%', right: '3%', size: 'w-3 h-3', color: 'text-yellow-100', opacity: 'opacity-45', delay: '1.1s', duration: '4.1s' },
+  { id: 'r9', top: '70%', right: '5%', size: 'w-5 h-5', color: 'text-amber-400', opacity: 'opacity-70', delay: '0.3s', duration: '3.5s' },
+  { id: 'r10', top: '79%', right: '2%', size: 'w-2.5 h-2.5', color: 'text-yellow-200', opacity: 'opacity-40', delay: '1.7s', duration: '2.8s' },
+  { id: 'r11', top: '88%', right: '6%', size: 'w-3.5 h-3.5', color: 'text-amber-300', opacity: 'opacity-50', delay: '2.1s', duration: '3.7s' },
+  { id: 'r12', top: '95%', right: '3%', size: 'w-4 h-4', color: 'text-amber-400', opacity: 'opacity-65', delay: '0.9s', duration: '3.2s' },
 ]
 
 // Executive Academic Highlights for Quick HR Scanning
@@ -184,11 +199,18 @@ const educationItems = [
       class="fixed inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none -z-10 opacity-70">
     </div>
 
-    <!-- Floating Twinkling Stars across the Background -->
-    <div v-for="star in stars" :key="`star-${star.id}`"
-      class="fixed pointer-events-none -z-10 animate-twinkle select-none" :class="[star.opacity, star.color]"
-      :style="{ top: star.top, left: star.left, right: star.right, animationDelay: star.delay }">
-      <svg :class="star.size" viewBox="0 0 24 24" fill="currentColor">
+    <!-- Ambient Flanking Stars across Left and Right (HeroSection style) -->
+    <div
+      v-for="s in backgroundStars"
+      :key="s.id"
+      class="absolute z-20 pointer-events-none select-none transition-transform duration-75"
+      :class="s.opacity"
+      :style="{ top: s.top, left: s.left, right: s.right }">
+      <svg
+        :class="[s.size, s.color, 'animate-twinkle']"
+        :style="{ animationDelay: s.delay, animationDuration: s.duration }"
+        viewBox="0 0 24 24"
+        fill="currentColor">
         <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
       </svg>
     </div>

@@ -9,26 +9,21 @@ const sections = [
   {
     id: 'education',
     name: 'EDUCATION',
-<<<<<<< main
-    status: 'SHOWING NOW',
-    path: '',
-=======
     status: 'NOW SHOWING',
     path: '/education',
->>>>>>> local
     image: `${baseUrl}telkomUniversity.png`,
   },
   {
     id: 'experience',
     name: 'EXPERIENCE',
-    status: 'SHOWING NOW',
+    status: 'COMING SOON',
     path: '',
     image: `${baseUrl}fmlx.jpeg`,
   },
   {
     id: 'projects',
     name: 'PROJECTS',
-    status: 'SHOWING NOW',
+    status: 'COMING SOON',
     path: '',
     image: `${baseUrl}porto.png`,
   },
