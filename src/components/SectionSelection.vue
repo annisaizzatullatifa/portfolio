@@ -16,8 +16,8 @@ const sections = [
   {
     id: 'experience',
     name: 'EXPERIENCE',
-    status: 'COMING SOON',
-    path: '',
+    status: 'NOW SHOWING',
+    path: '/experience',
     image: `${baseUrl}fmlx.jpeg`,
   },
   {
