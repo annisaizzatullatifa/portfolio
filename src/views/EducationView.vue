@@ -1,7 +1,36 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const baseUrl = import.meta.env.BASE_URL
+
+// In-Page Lightbox Modal State for Image Previews
+const activePreview = ref(null)
+
+const openPreview = (item) => {
+  activePreview.value = item
+  document.body.style.overflow = 'hidden'
+}
+
+const closePreview = () => {
+  activePreview.value = null
+  document.body.style.overflow = ''
+}
+
+const handleKeydown = (e) => {
+  if (e.key === 'Escape' && activePreview.value) {
+    closePreview()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
+})
 
 // Social Links & CV matching Hero Section
 const cvUrl = 'https://drive.google.com/file/d/1s-PLymWLnDsYRtL0GIWAShSC4IKXftTr/view?usp=sharing'
@@ -362,110 +391,90 @@ const educationItems = [
     <main class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 pb-20">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
         <article v-for="item in educationItems" :key="item.sceneNumber"
-          class="group relative rounded-2xl bg-neutral-950/90 text-white border border-neutral-800 shadow-[0_12px_32px_rgba(0,0,0,0.5)] hover:border-amber-400/50 hover:shadow-[0_16px_40px_rgba(255,174,0,0.12)] transition-all duration-300 flex flex-col justify-between p-4 sm:p-5 overflow-hidden">
+          class="group relative rounded-2xl bg-neutral-950/90 text-white border border-neutral-800 shadow-[0_12px_32px_rgba(0,0,0,0.5)] hover:border-amber-400/50 hover:shadow-[0_16px_40px_rgba(255,174,0,0.12)] transition-all duration-300 flex flex-col p-4 sm:p-5 overflow-hidden">
 
           <!-- Top Row: Scene Tag & Category -->
-          <div>
-            <div
-              class="flex items-center justify-between text-xs font-mono text-neutral-400 pb-2.5 border-b border-white/5 mb-3">
-              <span class="text-amber-400 font-semibold tracking-wider flex items-center gap-1.5">
-                <span class="text-[10px] text-amber-400">★</span>
-                <span>SCENE {{ item.sceneNumber }}</span>
-                <span class="text-neutral-600">//</span>
-                <span class="text-neutral-300">{{ item.category }}</span>
-              </span>
-            </div>
-
-            <!-- Card Heading -->
-            <h2
-              class="font-anton uppercase tracking-wide text-lg sm:text-xl text-white group-hover:text-amber-200 transition-colors leading-snug mb-2.5">
-              {{ item.title }}
-            </h2>
-
-            <!-- Media Preview Thumbnail (Contained, non-bloated height for fast visual context) -->
-            <div
-              class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-48 rounded-xl overflow-hidden bg-[#121212] border border-neutral-800 shadow-[inset_0_2px_10px_rgba(0,0,0,0.85)] group-hover:border-amber-400/40 transition-colors my-2.5">
-              <!-- Clickable wrapper for items 1-5 -->
-              <a v-if="item.isClickable && item.pdfUrl" :href="item.pdfUrl" target="_blank" rel="noopener noreferrer"
-                class="w-full h-full block cursor-pointer relative"
-                :title="`Open ${item.actionText} (Google Drive PDF)`">
-                <img :src="item.image" :alt="item.title"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
-                  loading="lazy" />
-
-                <!-- Corner Viewfinder Marks -->
-                <div class="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-amber-400/80"></div>
-                <div class="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-amber-400/80"></div>
-                <div class="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-amber-400/80"></div>
-                <div class="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-amber-400/80"></div>
-
-                <!-- Hover Cue -->
-                <div
-                  class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-1.5 text-xs font-poppins font-semibold text-white">
-                  <span>Open PDF Document</span>
-                  <span class="text-amber-300">↗</span>
-                </div>
-              </a>
-
-              <!-- Static wrapper for item 6 (collage) -->
-              <div v-else class="w-full h-full relative select-none">
-                <img :src="item.image" :alt="item.title"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
-                  loading="lazy" />
-
-                <!-- Corner Viewfinder Marks -->
-                <div class="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-amber-400/80"></div>
-                <div class="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-amber-400/80"></div>
-                <div class="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-amber-400/80"></div>
-                <div class="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-amber-400/80"></div>
-
-                <div class="absolute bottom-2 right-2 z-10">
-                  <span
-                    class="px-2 py-0.5 rounded-full bg-black/80 border border-white/10 text-[9px] font-mono text-neutral-300 uppercase">
-                    Photo Archive
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Concise Description for HR Scanning -->
-            <p class="font-poppins text-neutral-300 text-xs sm:text-sm leading-relaxed mt-2.5 mb-3 font-normal">
-              {{ item.description }}
-            </p>
-
-            <!-- Badges / Skills Pills -->
-            <div class="flex flex-wrap gap-1.5 mb-4">
-              <span v-for="badge in item.badges" :key="badge"
-                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-poppins font-medium bg-[#141414] border border-amber-500/20 text-amber-200/90">
-                {{ badge }}
-              </span>
-            </div>
+          <div
+            class="flex items-center justify-between text-xs font-mono text-neutral-400 pb-2.5 border-b border-white/5 mb-3">
+            <span class="text-amber-400 font-semibold tracking-wider flex items-center gap-1.5">
+              <span class="text-[10px] text-amber-400">★</span>
+              <span>SCENE {{ item.sceneNumber }}</span>
+              <span class="text-neutral-600">//</span>
+              <span class="text-neutral-300">{{ item.category }}</span>
+            </span>
           </div>
 
-          <!-- Bottom Action Row -->
-          <div class="pt-2 border-t border-white/5 flex items-center justify-between">
+          <!-- Card Heading -->
+          <h2
+            class="font-anton uppercase tracking-wide text-lg sm:text-xl text-white group-hover:text-amber-200 transition-colors leading-snug mb-2.5">
+            {{ item.title }}
+          </h2>
+
+          <!-- Media Preview Thumbnail (Contained, non-bloated height for fast visual context) -->
+          <div
+            class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-48 rounded-xl overflow-hidden bg-[#121212] border border-neutral-800 shadow-[inset_0_2px_10px_rgba(0,0,0,0.85)] group-hover:border-amber-400/40 transition-colors my-2.5">
+            <!-- Clickable wrapper for items 1-5 -->
             <a v-if="item.isClickable && item.pdfUrl" :href="item.pdfUrl" target="_blank" rel="noopener noreferrer"
-              class="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/50 hover:border-amber-300 text-xs font-poppins font-medium text-amber-300 hover:text-white transition-all duration-200 shadow-[0_0_12px_rgba(255,174,0,0.1)]">
-              <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <span>{{ item.actionText }}</span>
-              <svg class="w-3 h-3 text-amber-400 group-hover/btn:translate-x-0.5 transition-transform" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
+              class="w-full h-full block cursor-pointer relative"
+              :title="`Open ${item.actionText} (Google Drive PDF)`">
+              <img :src="item.image" :alt="item.title"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
+                loading="lazy" />
+
+              <!-- Corner Viewfinder Marks -->
+              <div class="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-amber-400/80"></div>
+              <div class="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-amber-400/80"></div>
+              <div class="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-amber-400/80"></div>
+              <div class="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-amber-400/80"></div>
+
+              <!-- Hover Cue -->
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-1.5 text-xs font-poppins font-semibold text-white">
+                <span>Open PDF Document</span>
+                <span class="text-amber-300">↗</span>
+              </div>
             </a>
 
-            <span v-else class="text-[11px] font-mono text-neutral-500 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-neutral-600"></span>
-              <span>Photographic Collage Showcase</span>
-            </span>
+            <!-- Interactive wrapper for item 6 (collage) with in-page popup -->
+            <button v-else type="button" @click="openPreview(item)"
+              class="w-full h-full block cursor-pointer relative group/thumb text-left select-none"
+              title="Click to expand photographic collage">
+              <img :src="item.image" :alt="item.title"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
+                loading="lazy" />
 
-            <span class="text-[10px] font-mono text-neutral-600 uppercase">
-              #0{{ item.sceneNumber }}
+              <!-- Corner Viewfinder Marks -->
+              <div class="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-amber-400/80"></div>
+              <div class="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-amber-400/80"></div>
+              <div class="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-amber-400/80"></div>
+              <div class="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-amber-400/80"></div>
+
+              <!-- Hover Cue -->
+              <div
+                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-1.5 text-xs font-poppins font-semibold text-white">
+                <span>View Photo Showcase</span>
+                <span class="text-amber-300">⛶</span>
+              </div>
+
+              <div class="absolute bottom-2 right-2 z-10">
+                <span
+                  class="px-2 py-0.5 rounded-full bg-black/80 border border-white/10 text-[9px] font-mono text-neutral-300 uppercase">
+                  Photo Archive
+                </span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Concise Description for HR Scanning -->
+          <p class="font-poppins text-neutral-300 text-xs sm:text-sm leading-relaxed mt-2.5 mb-3 font-normal">
+            {{ item.description }}
+          </p>
+
+          <!-- Badges / Skills Pills -->
+          <div class="flex flex-wrap gap-1.5">
+            <span v-for="badge in item.badges" :key="badge"
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-poppins font-medium bg-[#141414] border border-amber-500/20 text-amber-200/90">
+              {{ badge }}
             </span>
           </div>
         </article>
@@ -493,6 +502,78 @@ const educationItems = [
         </div>
       </div>
     </footer>
+
+    <!-- ==================== IN-PAGE IMAGE LIGHTBOX MODAL ==================== -->
+    <Teleport to="body">
+      <Transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 scale-95"
+        enter-to-class="opacity-100 scale-100"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100 scale-100"
+        leave-to-class="opacity-0 scale-95">
+        <div
+          v-if="activePreview"
+          class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md"
+          @click.self="closePreview"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="activePreview.title">
+          <div
+            class="relative max-w-4xl w-full bg-neutral-950 border border-amber-400/30 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col max-h-[92vh]">
+            
+            <!-- Modal Header Bar -->
+            <div
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-neutral-900/80">
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="text-amber-400 font-semibold flex items-center gap-1.5">
+                  <span class="text-xs">★</span>
+                  <span>SCENE {{ activePreview.sceneNumber }}</span>
+                  <span class="text-neutral-600">//</span>
+                  <span class="text-neutral-300 uppercase">{{ activePreview.category }}</span>
+                </span>
+              </div>
+
+              <!-- Close Button -->
+              <button
+                type="button"
+                @click="closePreview"
+                class="group inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-amber-400/20 border border-white/10 hover:border-amber-400/50 text-xs font-poppins text-neutral-300 hover:text-white transition-all cursor-pointer"
+                title="Close (Esc)">
+                <span class="hidden sm:inline font-mono text-[10px] text-neutral-400 group-hover:text-amber-200">ESC</span>
+                <span class="text-sm leading-none font-bold">✕</span>
+              </button>
+            </div>
+
+            <!-- Modal Image Container -->
+            <div class="relative w-full flex-1 min-h-0 bg-[#0d0d0d] flex items-center justify-center p-2 sm:p-4 overflow-auto">
+              <div class="relative inline-block max-w-full max-h-full">
+                <img
+                  :src="activePreview.image"
+                  :alt="activePreview.title"
+                  class="max-h-[72vh] w-auto max-w-full object-contain rounded-lg border border-white/10 shadow-2xl" />
+
+                <!-- Corner Viewfinder Marks -->
+                <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-amber-400/90 pointer-events-none"></div>
+                <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-amber-400/90 pointer-events-none"></div>
+                <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-amber-400/90 pointer-events-none"></div>
+                <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-amber-400/90 pointer-events-none"></div>
+              </div>
+            </div>
+
+            <!-- Modal Footer / Caption -->
+            <div class="px-4 sm:px-6 py-2.5 border-t border-white/10 bg-neutral-900/60 flex items-center justify-between text-xs text-neutral-400">
+              <span class="font-poppins truncate pr-4 text-neutral-300 text-[11px] sm:text-xs">
+                {{ activePreview.title }}
+              </span>
+              <span class="text-[10px] font-mono text-neutral-500 shrink-0 uppercase">
+                Photo Showcase
+              </span>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
