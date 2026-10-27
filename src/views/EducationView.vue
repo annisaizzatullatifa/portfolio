@@ -175,6 +175,8 @@ const educationItems = [
     pdfUrl: 'https://drive.google.com/file/d/1useMxLvhoWTqF0FpmgkEzoBYgQEqx1wH/view?usp=sharing',
     actionText: 'View Presenter Certificate (PDF)',
     isClickable: true,
+    paperUrl: 'https://ieeexplore.ieee.org/document/11279202/',
+    paperActionText: 'Open the Paper in IEEEXplore',
   },
   {
     sceneNumber: '05',
@@ -469,6 +471,21 @@ const educationItems = [
           <p class="font-poppins text-neutral-300 text-xs sm:text-sm leading-relaxed mt-2.5 mb-3 font-normal">
             {{ item.description }}
           </p>
+
+          <!-- Publication / Paper External Link Button (e.g. IEEE Conference) -->
+          <div v-if="item.paperUrl" class="mb-3.5">
+            <a :href="item.paperUrl" target="_blank" rel="noopener noreferrer"
+              class="group/btn inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-yellow-400/10 to-amber-500/15 border border-amber-400/50 hover:border-amber-300 text-amber-300 hover:text-white font-poppins text-xs font-semibold shadow-[0_0_14px_rgba(255,174,0,0.12)] hover:shadow-[0_0_20px_rgba(255,174,0,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+              <span>{{ item.paperActionText || 'Open the Paper in IEEEXplore' }}</span>
+              <svg class="w-3.5 h-3.5 text-amber-400 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
+          </div>
 
           <!-- Badges / Skills Pills -->
           <div class="flex flex-wrap gap-1.5">
