@@ -44,6 +44,7 @@ const backgroundStars = [
 ]
 
 // Executive Experience Highlights for Quick HR Scanning
+// eslint-disable-next-line no-unused-vars
 const hrHighlights = [
   {
     id: 'internships',

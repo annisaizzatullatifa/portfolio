@@ -23,8 +23,8 @@ const sections = [
   {
     id: 'projects',
     name: 'PROJECTS',
-    status: 'COMING SOON',
-    path: '',
+    status: 'NOW SHOWING',
+    path: '/projects',
     image: `${baseUrl}porto.png`,
   },
 ]
@@ -84,7 +84,7 @@ const handleNavigate = (path, event) => {
           <!-- Status Title with dynamic value (e.g. SHOWING NOW / COMING SOON) -->
           <div class="flex items-center justify-center w-full">
             <span
-              class="font-anton text-xs sm:text-sm tracking-[0.26em] uppercase text-amber-300 drop-shadow-[0_0_8px_rgba(253,224,71,0.55)] group-hover:text-amber-200 transition-colors select-none">
+              class="font-anton text-sm sm:text-base md:text-lg tracking-[0.24em] uppercase text-amber-300 drop-shadow-[0_0_8px_rgba(253,224,71,0.55)] group-hover:text-amber-200 transition-colors select-none">
               {{ section.status || 'NOW SHOWING' }}
             </span>
           </div>

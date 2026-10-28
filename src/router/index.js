@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/ExperienceView.vue'),
     },
     {
+      path: '/projects',
+      name: 'projects',
+      component: () => import('../views/ProjectsView.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/',
     },
