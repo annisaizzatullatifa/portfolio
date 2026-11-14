@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import ChatbotWidget from '@/components/chatbot/ChatbotWidget.vue'
 
 const handleAfterLeave = () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
@@ -13,6 +14,7 @@ const handleAfterLeave = () => {
         <component :is="Component" />
       </Transition>
     </RouterView>
+    <ChatbotWidget />
   </div>
 </template>
 
