@@ -332,100 +332,98 @@ onUnmounted(() => {
             class="absolute -inset-1.5 bg-gradient-to-r from-amber-500/35 via-yellow-400/40 to-orange-500/35 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none">
           </div>
 
-          <!-- Stylized Golden Corner Brackets with Twinkling Sparkles -->
-          <div
-            class="absolute -top-2.5 -left-2.5 w-7 h-7 border-t-2 border-l-2 border-amber-400 pointer-events-none transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
-          </div>
-          <div
-            class="absolute -bottom-2.5 -right-2.5 w-7 h-7 border-b-2 border-r-2 border-amber-400 pointer-events-none hidden sm:block transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1">
-          </div>
-
-          <!-- Left Transparent Ticket Cutout Notch Curved Arc Outline -->
-          <div class="absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 pointer-events-none z-10">
-            <svg class="w-full h-full" viewBox="0 0 28 28" fill="none">
-              <path d="M 14 0 A 14 14 0 0 1 14 28" stroke="rgba(252, 211, 77, 0.75)" stroke-width="1.5" />
-            </svg>
-          </div>
-
-          <!-- Right Transparent Ticket Cutout Notch Curved Arc Outline -->
-          <div class="absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 pointer-events-none z-10">
-            <svg class="w-full h-full" viewBox="0 0 28 28" fill="none">
-              <path d="M 14 0 A 14 14 0 0 0 14 28" stroke="rgba(252, 211, 77, 0.75)" stroke-width="1.5" />
-            </svg>
-          </div>
-
-          <!-- The Ticket Body with Transparent Cutout Mask -->
-          <div
-            class="ticket-cutout-mask relative flex items-stretch bg-gradient-to-br from-[#FFC226] via-[#FFAE00] to-[#F59E0B] text-black rounded-2xl border border-amber-300/80 shadow-[0_16px_40px_rgba(255,174,0,0.38)] transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-[0_22px_50px_rgba(255,174,0,0.55)] active:scale-95 overflow-hidden select-none">
-            <!-- Light Shimmer Sweep Effect across Ticket Surface -->
-            <div
-              class="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none transition-transform ease-in-out">
+          <!-- Scaled Wrapper: Keeps Ticket Body & Cutout Arcs in Lockstep -->
+          <div class="relative flex items-stretch transition-all duration-300 group-hover:scale-[1.03] active:scale-95">
+            <!-- Left Transparent Ticket Cutout Notch Curved Arc Outline -->
+            <div class="absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 pointer-events-none z-10">
+              <svg class="w-full h-full" viewBox="0 0 28 28" fill="none">
+                <path d="M 14 0 A 14 14 0 0 1 14 28" stroke="rgba(252, 211, 77, 0.75)" stroke-width="1.5" />
+              </svg>
             </div>
 
-            <!-- Main Ticket Body -->
-            <div class="px-5 sm:px-7 py-4 sm:py-5 flex flex-col justify-center gap-2 text-left">
-              <!-- Name & Degree: Enlarged, Matching in Size, Horizontally Aligned -->
-              <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
-                <h3
-                  class="font-anton uppercase tracking-wide text-neutral-950 text-xl sm:text-2xl md:text-3xl lg:text-[2rem] leading-none drop-shadow-sm group-hover:text-black transition-colors">
-                  ANNISA IZZATUL LATIFA
-                </h3>
+            <!-- The Main Ticket Body (Left Side) -->
+            <div
+              class="ticket-cutout-left relative flex items-stretch bg-gradient-to-br from-[#FFC226] via-[#FFAE00] to-[#F59E0B] text-black rounded-2xl sm:rounded-r-none border border-amber-300/80 sm:border-r-0 shadow-[0_16px_40px_rgba(255,174,0,0.38)] transition-shadow duration-300 group-hover:shadow-[0_22px_50px_rgba(255,174,0,0.55)] overflow-hidden select-none">
+              <!-- Light Shimmer Sweep Effect across Ticket Surface -->
+              <div
+                class="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none transition-transform ease-in-out">
+              </div>
+
+              <!-- Main Ticket Body -->
+              <div class="px-5 sm:px-7 py-4 sm:py-5 flex flex-col justify-center gap-2 text-left">
+                <!-- Name & Degree: Enlarged, Matching in Size, Horizontally Aligned -->
+                <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                  <h3
+                    class="font-anton uppercase tracking-wide text-neutral-950 text-xl sm:text-2xl md:text-3xl lg:text-[2rem] leading-none drop-shadow-sm group-hover:text-black transition-colors">
+                    ANNISA IZZATUL LATIFA
+                  </h3>
+                  <span
+                    class="font-anton uppercase tracking-wide text-neutral-900/90 text-xl sm:text-2xl md:text-3xl lg:text-[2rem] leading-none drop-shadow-sm">
+                    S.KOM
+                  </span>
+                </div>
+
+                <!-- Sleek High-Contrast Obsidian Email Capsule Button -->
+                <div
+                  class="flex items-center justify-between gap-3 px-3.5 py-1.5 sm:py-2 rounded-xl bg-neutral-950/90 text-amber-300 text-xs sm:text-sm font-poppins font-medium shadow-md border border-amber-400/40 group-hover:border-amber-300 group-hover:bg-black transition-all">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span class="tracking-wide text-neutral-100 font-semibold">{{ email }}</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 pl-2.5 border-l border-white/15 text-amber-400 text-xs font-bold tracking-wider group-hover:text-amber-300 shrink-0">
+                    <span>COPY</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Perforated Dashed Divider (Matching Real Ticket) -->
+              <div
+                class="hidden sm:flex flex-col justify-between py-2 border-l-2 border-dashed border-neutral-900/30 relative">
+              </div>
+
+              <!-- Sparkling Confetti Toast Overlay on Copy (Enlarged) -->
+              <transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 scale-95"
+                enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-150 ease-in"
+                leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                <div v-if="copied"
+                  class="absolute inset-0 bg-[#0a0a0a]/95 text-amber-400 font-poppins flex flex-col items-center justify-center gap-2 p-4 sm:p-6 backdrop-blur-md z-20 border border-amber-400/50">
+                  <div class="flex items-center gap-2.5 sm:gap-3">
+                    <span class="text-xl sm:text-2xl animate-bounce">✨</span>
+                    <span
+                      class="font-anton uppercase tracking-wider text-xl sm:text-2xl md:text-3xl text-white drop-shadow-[0_2px_8px_rgba(255,174,0,0.4)]">
+                      EMAIL COPIED!
+                    </span>
+                    <span class="text-xl sm:text-2xl animate-bounce">✨</span>
+                  </div>
+                  <p class="text-xs sm:text-sm md:text-base text-amber-300 font-medium tracking-wide">
+                    Ready to connect & collaborate!
+                  </p>
+                </div>
+              </transition>
+            </div>
+
+            <!-- Tearable Right Ticket Stub: "LET'S CONNECT" -->
+            <div class="hidden sm:flex relative items-stretch transition-all duration-500 ease-out select-none"
+              :class="copied ? 'translate-x-5 rotate-3 opacity-90' : 'translate-x-0 rotate-0 opacity-100'">
+              <!-- Right Transparent Ticket Cutout Notch Curved Arc Outline -->
+              <div class="absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 pointer-events-none z-10">
+                <svg class="w-full h-full" viewBox="0 0 28 28" fill="none">
+                  <path d="M 14 0 A 14 14 0 0 0 14 28" stroke="rgba(252, 211, 77, 0.75)" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div
+                class="ticket-cutout-right flex items-center justify-center bg-gradient-to-br from-[#FBBF24] to-[#F59E0B] text-black rounded-r-2xl border border-l-0 border-amber-300/80 shadow-[0_16px_40px_rgba(255,174,0,0.38)] px-1">
                 <span
-                  class="font-anton uppercase tracking-wide text-neutral-900/90 text-xl sm:text-2xl md:text-3xl lg:text-[2rem] leading-none drop-shadow-sm">
-                  S.KOM
+                  class="font-anton uppercase text-[11px] sm:text-xs tracking-widest text-neutral-900 -rotate-90 select-none whitespace-nowrap">
+                  LET'S CONNECT
                 </span>
               </div>
-
-              <!-- Sleek High-Contrast Obsidian Email Capsule Button -->
-              <div
-                class="flex items-center justify-between gap-3 px-3.5 py-1.5 sm:py-2 rounded-xl bg-neutral-950/90 text-amber-300 text-xs sm:text-sm font-poppins font-medium shadow-md border border-amber-400/40 group-hover:border-amber-300 group-hover:bg-black transition-all">
-                <div class="flex items-center gap-2">
-                  <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span class="tracking-wide text-neutral-100 font-semibold">{{ email }}</span>
-                </div>
-                <div
-                  class="flex items-center gap-1.5 pl-2.5 border-l border-white/15 text-amber-400 text-xs font-bold tracking-wider group-hover:text-amber-300 shrink-0">
-                  <span>COPY</span>
-                </div>
-              </div>
             </div>
-
-            <!-- Perforated Dashed Divider (Matching Real Ticket) -->
-            <div
-              class="hidden sm:flex flex-col justify-between py-2 border-l-2 border-dashed border-neutral-900/30 relative">
-            </div>
-
-            <!-- Right Ticket Stub: Clean LET'S CONNECT text without sparkles -->
-            <div class="hidden sm:flex items-center justify-center bg-black/[0.05]">
-              <span
-                class="font-anton uppercase text-[11px] sm:text-xs tracking-widest text-neutral-900 -rotate-90 select-none whitespace-nowrap">
-                LET'S CONNECT
-              </span>
-            </div>
-
-            <!-- Sparkling Confetti Toast Overlay on Copy (Enlarged) -->
-            <transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 scale-95"
-              enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-150 ease-in"
-              leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-              <div v-if="copied"
-                class="absolute inset-0 bg-[#0a0a0a]/95 text-amber-400 font-poppins flex flex-col items-center justify-center gap-2 p-4 sm:p-6 backdrop-blur-md z-20 border border-amber-400/50">
-                <div class="flex items-center gap-2.5 sm:gap-3">
-                  <span class="text-xl sm:text-2xl animate-bounce">✨</span>
-                  <span
-                    class="font-anton uppercase tracking-wider text-xl sm:text-2xl md:text-3xl text-white drop-shadow-[0_2px_8px_rgba(255,174,0,0.4)]">
-                    EMAIL COPIED!
-                  </span>
-                  <span class="text-xl sm:text-2xl animate-bounce">✨</span>
-                </div>
-                <p class="text-xs sm:text-sm md:text-base text-amber-300 font-medium tracking-wide">
-                  Ready to connect & collaborate!
-                </p>
-              </div>
-            </transition>
           </div>
         </div>
       </div>
@@ -435,26 +433,25 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.ticket-cutout-mask {
-  mask-image:
-    radial-gradient(circle 14px at 0% 50%, transparent 14px, #000 14.5px),
-    radial-gradient(circle 14px at 100% 50%, transparent 14px, #000 14.5px);
-  mask-position:
-    left center,
-    right center;
-  mask-size:
-    51% 100%,
-    51% 100%;
+.ticket-cutout-left {
+  mask-image: radial-gradient(circle 14px at 0% 50%, transparent 13.5px, #000 14.5px);
+  mask-position: left center;
+  mask-size: 100% 100%;
   mask-repeat: no-repeat;
-  -webkit-mask-image:
-    radial-gradient(circle 14px at 0% 50%, transparent 14px, #000 14.5px),
-    radial-gradient(circle 14px at 100% 50%, transparent 14px, #000 14.5px);
-  -webkit-mask-position:
-    left center,
-    right center;
-  -webkit-mask-size:
-    51% 100%,
-    51% 100%;
+  -webkit-mask-image: radial-gradient(circle 14px at 0% 50%, transparent 13.5px, #000 14.5px);
+  -webkit-mask-position: left center;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.ticket-cutout-right {
+  mask-image: radial-gradient(circle 14px at 100% 50%, transparent 13.5px, #000 14.5px);
+  mask-position: right center;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(circle 14px at 100% 50%, transparent 13.5px, #000 14.5px);
+  -webkit-mask-position: right center;
+  -webkit-mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
 }
 </style>

@@ -62,7 +62,7 @@ const handleNavigate = (path, event) => {
     </p>
 
     <!-- 3 "NOW SHOWING" Cinema Plaques Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 w-full max-w-[270px] sm:max-w-xs md:max-w-none mx-auto">
       <RouterLink v-for="(section, index) in sections" :key="section.id" :to="section.path || ''"
         @click="handleNavigate(section.path, $event)"
         class="group relative flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-neutral-950 text-white border-2 border-neutral-900 shadow-[0_16px_36px_rgba(0,0,0,0.3)] hover:shadow-[0_24px_54px_rgba(0,0,0,0.48),0_0_35px_rgba(255,174,0,0.22)] hover:border-amber-400/70 hover:-translate-y-2 transition-all duration-300 overflow-hidden cursor-pointer p-3 sm:p-4 text-left">

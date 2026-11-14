@@ -20,7 +20,7 @@ const summarySparkles = [
     <!-- ================================================================= -->
     <div class="relative w-full select-none overflow-hidden transition-all duration-500">
       <!-- Dark Space connecting to Hero Section & 35mm Cinema Film Roll Track -->
-      <div class="w-full bg-[#0a0a0a] pt-14 pb-0">
+      <div class="w-full bg-[#0a0a0a] pt-0 sm:pt-14 pb-0">
         <div class="relative w-full bg-[#141414] border-y border-amber-500/40 shadow-2xl py-3.5">
           <!-- Top Sprocket Perforations Row -->
           <div class="flex items-center justify-between px-3 gap-2 overflow-hidden opacity-75">
@@ -100,48 +100,43 @@ const summarySparkles = [
         </p>
       </div>
 
-      <!-- ==================== PART 2: THE SUMMARY FEATURE CARD (OPEN CLAPPERBOARD) ==================== -->
-      <div class="relative mb-16 sm:mb-20 pt-4 sm:pt-6">
-        <!-- Opened Top Clapper Stick (Artistic Tilt with Hinge Bolt) -->
+      <!-- ==================== PART 2: THE SUMMARY FEATURE CARD (SHUT CLAPPERBOARD) ==================== -->
+      <div class="relative mb-16 sm:mb-20">
+        <!-- Main Slate Body (Unified Shut Clapperboard, Sharp Edges) -->
         <div
-          class="relative w-[96%] sm:w-[98%] mx-auto z-10 origin-bottom-left -rotate-[2.5deg] sm:-rotate-[3.5deg] -mb-1 sm:-mb-1.5 transition-transform duration-300">
-          <div
-            class="relative h-7 sm:h-9 w-full bg-neutral-950 rounded-t-xl sm:rounded-t-2xl border border-neutral-800 overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.5)]">
-            <!-- Diagonal Alternating Amber/Black Clapper Stripes -->
+          class="relative bg-neutral-950 text-white rounded-3xl shadow-[0_30px_70px_-10px_rgba(0,0,0,0.65),0_16px_36px_-5px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.4)] border border-neutral-900 overflow-hidden transition-shadow duration-300 hover:shadow-[0_38px_85px_-10px_rgba(0,0,0,0.75),0_20px_45px_-5px_rgba(0,0,0,0.55)]">
+          <!-- Shut Clapperboard Mechanism (Upper Stick + Seam + Lower Lip + Left Hinge) -->
+          <div class="relative border-b border-neutral-800/90">
+            <!-- Upper Clapper Stick -->
             <div
-              class="absolute inset-0 bg-[repeating-linear-gradient(45deg,#FFAE00,#FFAE00_16px,#141414_16px,#141414_32px)]">
+              class="h-5 sm:h-6 w-full bg-[repeating-linear-gradient(45deg,#FFAE00,#FFAE00_16px,#141414_16px,#141414_32px)]">
+            </div>
+            <!-- Crisp Seam -->
+            <div class="h-[2px] w-full bg-neutral-950"></div>
+            <!-- Lower Clapper Lip -->
+            <div
+              class="h-4 sm:h-5 w-full bg-[repeating-linear-gradient(-45deg,#FFAE00,#FFAE00_16px,#141414_16px,#141414_32px)]">
+            </div>
+
+            <!-- Left Hinge Plate & Bolt -->
+            <div
+              class="absolute top-0 -bottom-px left-0 z-10 w-10 sm:w-14 bg-neutral-950 border-r border-neutral-800 flex items-center justify-center">
+              <div
+                class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-neutral-300 border-2 border-neutral-800 shadow-inner flex items-center justify-center">
+                <div class="w-2 sm:w-2.5 h-0.5 bg-neutral-700"></div>
+              </div>
             </div>
           </div>
-          <!-- Left Hinge Bolt / Pin -->
-          <div
-            class="absolute -bottom-1.5 left-2 sm:left-4 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-neutral-200 border-2 border-neutral-800 shadow-md flex items-center justify-center z-20">
-            <div class="w-2 sm:w-2.5 h-0.5 bg-neutral-700"></div>
-          </div>
-        </div>
 
-        <!-- Main Slate Body (Strictly Horizontal, Hovering 3D Deep Shadow) -->
-        <div
-          class="relative bg-neutral-950 text-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-[0_30px_70px_-10px_rgba(0,0,0,0.65),0_16px_36px_-5px_rgba(0,0,0,0.5),0_2px_10px_rgba(0,0,0,0.4)] border border-neutral-900 overflow-hidden transition-all duration-300 hover:shadow-[0_38px_85px_-10px_rgba(0,0,0,0.75),0_20px_45px_-5px_rgba(0,0,0,0.55)]">
-          <!-- Fixed Lower Clapper Lip Stripe -->
-          <div
-            class="h-3 sm:h-3.5 -mx-6 sm:-mx-10 md:-mx-12 -mt-6 sm:-mt-10 md:-mt-12 mb-6 bg-[repeating-linear-gradient(-45deg,#FFAE00,#FFAE00_16px,#141414_16px,#141414_32px)] border-b border-neutral-800/80">
-          </div>
+          <!-- Slate Content Body -->
+          <div class="relative p-6 sm:p-10 md:p-12">
+            <!-- Cinema Light Ambience within Slate -->
+            <div class="absolute -top-20 -right-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
+            </div>
 
-          <!-- Cinema Light Ambience within Slate -->
-          <div class="absolute -top-20 -right-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
-          </div>
-
-          <!-- Clapperboard Slate Header: Enlarged Prod Title with Subtle Low Opacity -->
-          <div class="pb-5 border-b border-white/10 flex items-center justify-between">
-            <h3
-              class="font-anton tracking-widest sm:tracking-[0.2em] text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/10 uppercase select-none">
-              PROD: ANNISA IZZATUL LATIFA, S.KOM
-            </h3>
-          </div>
-
-          <!-- Feature Pillars Styled as Digital Clapperboard Timer LED Display (Positioned on Top) -->
-          <div
-            class="my-6 p-2 sm:p-2.5 rounded-2xl bg-[#080808] border border-amber-500/20 shadow-[inset_0_2px_12px_rgba(0,0,0,0.9),0_0_20px_rgba(255,174,0,0.06)]">
+            <!-- Feature Pillars Styled as Digital Clapperboard Timer LED Display (Positioned on Top) -->
+            <div
+              class="mb-6 sm:mb-8 p-2 sm:p-2.5 rounded-2xl bg-[#080808] border border-amber-500/20 shadow-[inset_0_2px_12px_rgba(0,0,0,0.9),0_0_20px_rgba(255,174,0,0.06)]">
             <!-- Digital LED Timecode Header Strip -->
             <div class="px-3 py-1 text-[10px] sm:text-[11px] font-mono mb-2 text-neutral-500">
               <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse mr-2"></span>
@@ -160,7 +155,7 @@ const summarySparkles = [
                     UI / UX
                   </span>
                 </div>
-                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 line-clamp-1">
+                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 leading-snug sm:line-clamp-1">
                   Design Systems & Figma
                 </span>
               </div>
@@ -175,7 +170,7 @@ const summarySparkles = [
                     WEB DEVELOPMENT
                   </span>
                 </div>
-                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 line-clamp-1">
+                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 leading-snug sm:line-clamp-1">
                   Frontend & Full-Stack
                 </span>
               </div>
@@ -190,7 +185,7 @@ const summarySparkles = [
                     MACHINE LEARNING
                   </span>
                 </div>
-                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 line-clamp-1">
+                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 leading-snug sm:line-clamp-1">
                   AI & Recommender System
                 </span>
               </div>
@@ -205,7 +200,7 @@ const summarySparkles = [
                     PRODUCT
                   </span>
                 </div>
-                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 line-clamp-1">
+                <span class="text-[11px] sm:text-xs text-neutral-400 font-poppins mt-0.5 leading-snug sm:line-clamp-1">
                   Cross-Functional Delivery
                 </span>
               </div>
@@ -225,7 +220,8 @@ const summarySparkles = [
               problem-solving and cross-functional collaboration through various internships and projects experience.
               Highly adaptive and eager to drive impact across <span class="text-amber-300 font-semibold">software
                 engineering, product, or data roles</span>.
-            </p>
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -231,17 +231,11 @@ const educationItems = [
     </div>
 
     <!-- Ambient Flanking Stars across Left and Right (HeroSection style) -->
-    <div
-      v-for="s in backgroundStars"
-      :key="s.id"
-      class="absolute z-20 pointer-events-none select-none transition-transform duration-75"
-      :class="s.opacity"
+    <div v-for="s in backgroundStars" :key="s.id"
+      class="absolute z-20 pointer-events-none select-none transition-transform duration-75" :class="s.opacity"
       :style="{ top: s.top, left: s.left, right: s.right }">
-      <svg
-        :class="[s.size, s.color, 'animate-twinkle']"
-        :style="{ animationDelay: s.delay, animationDuration: s.duration }"
-        viewBox="0 0 24 24"
-        fill="currentColor">
+      <svg :class="[s.size, s.color, 'animate-twinkle']"
+        :style="{ animationDelay: s.delay, animationDuration: s.duration }" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
       </svg>
     </div>
@@ -263,7 +257,7 @@ const educationItems = [
             <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           <span class="font-semibold tracking-wide text-white group-hover:text-amber-200 transition-colors">
-            Back to Lobby
+            Back
           </span>
           <span class="text-xs text-amber-300 animate-twinkle select-none ml-0.5">✨</span>
         </RouterLink>
@@ -351,14 +345,14 @@ const educationItems = [
 
       <!-- ==================== EXECUTIVE HIGHLIGHTS STRIP (FOR HR QUICK SCANNING) ==================== -->
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-left">
-        <div
-          v-for="(hl, idx) in hrHighlights"
-          :key="hl.id"
+        <div v-for="(hl, idx) in hrHighlights" :key="hl.id"
           class="relative p-[1.5px] rounded-2xl overflow-hidden bg-amber-400/20 shadow-[0_10px_28px_rgba(0,0,0,0.5)]">
           <!-- Continuous Rotating Golden Glow Border Beam (Full Perimeter amber-400 Color) -->
-          <div
-            class="absolute inset-[-150%] bg-[conic-gradient(from_0deg_at_50%_50%,rgba(251,191,36,0.2)_0deg,rgba(251,191,36,0.3)_60deg,rgba(251,191,36,0.6)_140deg,rgba(251,191,36,0.9)_200deg,#fbbf24_240deg,rgba(251,191,36,0.9)_280deg,rgba(251,191,36,0.5)_320deg,rgba(251,191,36,0.2)_360deg)] animate-border-spin pointer-events-none"
-            :style="{ animationDelay: `${idx * -2.25}s` }">
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] aspect-square pointer-events-none">
+            <div
+              class="w-full h-full bg-[conic-gradient(from_0deg_at_50%_50%,rgba(251,191,36,0.2)_0deg,rgba(251,191,36,0.3)_60deg,rgba(251,191,36,0.6)_140deg,rgba(251,191,36,0.9)_200deg,#fbbf24_240deg,rgba(251,191,36,0.9)_280deg,rgba(251,191,36,0.5)_320deg,rgba(251,191,36,0.2)_360deg)] animate-border-spin"
+              :style="{ animationDelay: `${idx * -2.25}s` }">
+            </div>
           </div>
 
           <!-- Inner Card Content (Stationary, no hover animation) -->
@@ -408,7 +402,7 @@ const educationItems = [
 
           <!-- Card Heading -->
           <h2
-            class="font-anton uppercase tracking-wide text-lg sm:text-xl text-white group-hover:text-amber-200 transition-colors leading-snug mb-2.5">
+            class="font-anton uppercase tracking-wide text-lg sm:text-xl text-white group-hover:text-amber-400 transition-colors leading-snug mb-2.5">
             {{ item.title }}
           </h2>
 
@@ -417,8 +411,7 @@ const educationItems = [
             class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-48 rounded-xl overflow-hidden bg-[#121212] border border-neutral-800 shadow-[inset_0_2px_10px_rgba(0,0,0,0.85)] group-hover:border-amber-400/40 transition-colors my-2.5">
             <!-- Clickable wrapper for items 1-5 -->
             <a v-if="item.isClickable && item.pdfUrl" :href="item.pdfUrl" target="_blank" rel="noopener noreferrer"
-              class="w-full h-full block cursor-pointer relative"
-              :title="`Open ${item.actionText} (Google Drive PDF)`">
+              class="w-full h-full block cursor-pointer relative" :title="`Open ${item.actionText} (Google Drive PDF)`">
               <img :src="item.image" :alt="item.title"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
                 loading="lazy" />
@@ -477,7 +470,8 @@ const educationItems = [
             <a :href="item.paperUrl" target="_blank" rel="noopener noreferrer"
               class="group/btn inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-yellow-400/10 to-amber-500/15 border border-amber-400/50 hover:border-amber-300 text-amber-300 hover:text-white font-poppins text-xs font-semibold shadow-[0_0_14px_rgba(255,174,0,0.12)] hover:shadow-[0_0_20px_rgba(255,174,0,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
               <span>{{ item.paperActionText || 'Open the Paper in IEEEXplore' }}</span>
-              <svg class="w-3.5 h-3.5 text-amber-400 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+              <svg
+                class="w-3.5 h-3.5 text-amber-400 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 viewBox="0 0 24 24">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -502,16 +496,36 @@ const educationItems = [
     <footer
       class="relative w-full bg-neutral-950 border-t border-white/10 pt-8 pb-12 px-5 sm:px-8 text-center select-none">
       <div class="max-w-2xl mx-auto flex flex-col items-center">
-        <!-- Return to Lobby Button -->
-        <RouterLink to="/"
-          class="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-yellow-400/10 to-amber-500/20 border border-amber-400/60 font-poppins font-semibold text-xs sm:text-sm text-white shadow-[0_0_20px_rgba(255,174,0,0.18)] hover:shadow-[0_0_30px_rgba(255,174,0,0.45)] hover:border-amber-300 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer mb-5">
-          <svg class="w-4 h-4 text-amber-400 group-hover:-translate-x-1 transition-transform" fill="none"
-            stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <span>Return to Cinema Lobby</span>
-          <span class="text-xs text-amber-300 animate-twinkle">✨</span>
-        </RouterLink>
+        <!-- Footer Navigation Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-5">
+          <RouterLink to="/"
+            class="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-yellow-400/10 to-amber-500/20 border border-amber-400/60 font-poppins font-semibold text-xs sm:text-sm text-white shadow-[0_0_20px_rgba(255,174,0,0.18)] hover:shadow-[0_0_30px_rgba(255,174,0,0.45)] hover:border-amber-300 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
+            <svg class="w-4 h-4 text-amber-400 group-hover:-translate-x-1 transition-transform" fill="none"
+              stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>Return to Cinema Lobby</span>
+            <span class="text-xs text-amber-300 animate-twinkle">✨</span>
+          </RouterLink>
+
+          <RouterLink to="/experience"
+            class="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/80 border border-amber-400/35 font-poppins font-semibold text-xs sm:text-sm text-amber-200 hover:text-white hover:bg-amber-500/15 hover:border-amber-300 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
+            <span>Experience</span>
+            <svg class="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-1 transition-transform" fill="none"
+              stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </RouterLink>
+
+          <RouterLink to="/projects"
+            class="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/80 border border-amber-400/35 font-poppins font-semibold text-xs sm:text-sm text-amber-200 hover:text-white hover:bg-amber-500/15 hover:border-amber-300 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
+            <span>Projects</span>
+            <svg class="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-1 transition-transform" fill="none"
+              stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </RouterLink>
+        </div>
 
         <!-- Copyright -->
         <div class="text-[11px] font-mono text-neutral-500">
@@ -522,26 +536,17 @@ const educationItems = [
 
     <!-- ==================== IN-PAGE IMAGE LIGHTBOX MODAL ==================== -->
     <Teleport to="body">
-      <Transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="opacity-0 scale-95"
-        enter-to-class="opacity-100 scale-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="opacity-100 scale-100"
-        leave-to-class="opacity-0 scale-95">
-        <div
-          v-if="activePreview"
+      <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 scale-95"
+        enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+        <div v-if="activePreview"
           class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md"
-          @click.self="closePreview"
-          role="dialog"
-          aria-modal="true"
-          :aria-label="activePreview.title">
+          @click.self="closePreview" role="dialog" aria-modal="true" :aria-label="activePreview.title">
           <div
             class="relative max-w-4xl w-full bg-neutral-950 border border-amber-400/30 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col max-h-[92vh]">
-            
+
             <!-- Modal Header Bar -->
-            <div
-              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-neutral-900/80">
+            <div class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-neutral-900/80">
               <div class="flex items-center gap-2 text-xs font-mono">
                 <span class="text-amber-400 font-semibold flex items-center gap-1.5">
                   <span class="text-xs">★</span>
@@ -552,34 +557,41 @@ const educationItems = [
               </div>
 
               <!-- Close Button -->
-              <button
-                type="button"
-                @click="closePreview"
+              <button type="button" @click="closePreview"
                 class="group inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-amber-400/20 border border-white/10 hover:border-amber-400/50 text-xs font-poppins text-neutral-300 hover:text-white transition-all cursor-pointer"
                 title="Close (Esc)">
-                <span class="hidden sm:inline font-mono text-[10px] text-neutral-400 group-hover:text-amber-200">ESC</span>
+                <span
+                  class="hidden sm:inline font-mono text-[10px] text-neutral-400 group-hover:text-amber-200">ESC</span>
                 <span class="text-sm leading-none font-bold">✕</span>
               </button>
             </div>
 
             <!-- Modal Image Container -->
-            <div class="relative w-full flex-1 min-h-0 bg-[#0d0d0d] flex items-center justify-center p-2 sm:p-4 overflow-auto">
+            <div
+              class="relative w-full flex-1 min-h-0 bg-[#0d0d0d] flex items-center justify-center p-2 sm:p-4 overflow-auto">
               <div class="relative inline-block max-w-full max-h-full">
-                <img
-                  :src="activePreview.image"
-                  :alt="activePreview.title"
+                <img :src="activePreview.image" :alt="activePreview.title"
                   class="max-h-[72vh] w-auto max-w-full object-contain rounded-lg border border-white/10 shadow-2xl" />
 
                 <!-- Corner Viewfinder Marks -->
-                <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-amber-400/90 pointer-events-none"></div>
-                <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-amber-400/90 pointer-events-none"></div>
-                <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-amber-400/90 pointer-events-none"></div>
-                <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-amber-400/90 pointer-events-none"></div>
+                <div
+                  class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-amber-400/90 pointer-events-none">
+                </div>
+                <div
+                  class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-amber-400/90 pointer-events-none">
+                </div>
+                <div
+                  class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-amber-400/90 pointer-events-none">
+                </div>
+                <div
+                  class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-amber-400/90 pointer-events-none">
+                </div>
               </div>
             </div>
 
             <!-- Modal Footer / Caption -->
-            <div class="px-4 sm:px-6 py-2.5 border-t border-white/10 bg-neutral-900/60 flex items-center justify-between text-xs text-neutral-400">
+            <div
+              class="px-4 sm:px-6 py-2.5 border-t border-white/10 bg-neutral-900/60 flex items-center justify-between text-xs text-neutral-400">
               <span class="font-poppins truncate pr-4 text-neutral-300 text-[11px] sm:text-xs">
                 {{ activePreview.title }}
               </span>
@@ -627,6 +639,7 @@ const educationItems = [
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
